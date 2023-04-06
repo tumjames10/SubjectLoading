@@ -1,0 +1,12 @@
+C:\Users\Billy\source\repos\LoadingSystem\LoadingSystem\bin\Debug\net6.0\LoadingSystem.deps.json
+C:\Users\Billy\source\repos\LoadingSystem\LoadingSystem\bin\Debug\net6.0\LoadingSystem.dll
+C:\Users\Billy\source\repos\LoadingSystem\LoadingSystem\bin\Debug\net6.0\LoadingSystem.pdb
+C:\Users\Billy\source\repos\LoadingSystem\LoadingSystem\obj\Debug\net6.0\LoadingSystem.csproj.AssemblyReference.cache
+C:\Users\Billy\source\repos\LoadingSystem\LoadingSystem\obj\Debug\net6.0\LoadingSystem.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Billy\source\repos\LoadingSystem\LoadingSystem\obj\Debug\net6.0\LoadingSystem.AssemblyInfoInputs.cache
+C:\Users\Billy\source\repos\LoadingSystem\LoadingSystem\obj\Debug\net6.0\LoadingSystem.AssemblyInfo.cs
+C:\Users\Billy\source\repos\LoadingSystem\LoadingSystem\obj\Debug\net6.0\LoadingSystem.csproj.CoreCompileInputs.cache
+C:\Users\Billy\source\repos\LoadingSystem\LoadingSystem\obj\Debug\net6.0\LoadingSystem.dll
+C:\Users\Billy\source\repos\LoadingSystem\LoadingSystem\obj\Debug\net6.0\refint\LoadingSystem.dll
+C:\Users\Billy\source\repos\LoadingSystem\LoadingSystem\obj\Debug\net6.0\LoadingSystem.pdb
+C:\Users\Billy\source\repos\LoadingSystem\LoadingSystem\obj\Debug\net6.0\ref\LoadingSystem.dll

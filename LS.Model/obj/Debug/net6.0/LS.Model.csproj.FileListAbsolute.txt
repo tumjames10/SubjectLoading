@@ -1,0 +1,14 @@
+C:\Users\Billy\source\repos\LoadingSystem\LS.Model\bin\Debug\net6.0\LS.Model.deps.json
+C:\Users\Billy\source\repos\LoadingSystem\LS.Model\bin\Debug\net6.0\LS.Model.dll
+C:\Users\Billy\source\repos\LoadingSystem\LS.Model\bin\Debug\net6.0\LS.Model.pdb
+C:\Users\Billy\source\repos\LoadingSystem\LS.Model\obj\Debug\net6.0\LS.Model.csproj.AssemblyReference.cache
+C:\Users\Billy\source\repos\LoadingSystem\LS.Model\obj\Debug\net6.0\LS.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Billy\source\repos\LoadingSystem\LS.Model\obj\Debug\net6.0\LS.Model.AssemblyInfoInputs.cache
+C:\Users\Billy\source\repos\LoadingSystem\LS.Model\obj\Debug\net6.0\LS.Model.AssemblyInfo.cs
+C:\Users\Billy\source\repos\LoadingSystem\LS.Model\obj\Debug\net6.0\LS.Model.csproj.CoreCompileInputs.cache
+C:\Users\Billy\source\repos\LoadingSystem\LS.Model\obj\Debug\net6.0\LS.Model.dll
+C:\Users\Billy\source\repos\LoadingSystem\LS.Model\obj\Debug\net6.0\refint\LS.Model.dll
+C:\Users\Billy\source\repos\LoadingSystem\LS.Model\obj\Debug\net6.0\LS.Model.pdb
+C:\Users\Billy\source\repos\LoadingSystem\LS.Model\obj\Debug\net6.0\ref\LS.Model.dll
+C:\Users\Billy\source\repos\LoadingSystem\LS.Model\bin\Debug\net6.0\LS.Model.runtimeconfig.json
+C:\Users\Billy\source\repos\LoadingSystem\LS.Model\obj\Debug\net6.0\LS.Model.genruntimeconfig.cache

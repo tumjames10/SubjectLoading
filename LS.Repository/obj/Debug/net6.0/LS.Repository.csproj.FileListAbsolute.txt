@@ -1,0 +1,15 @@
+C:\Users\Billy\source\repos\LoadingSystem\LS.Repository\bin\Debug\net6.0\LS.Repository.deps.json
+C:\Users\Billy\source\repos\LoadingSystem\LS.Repository\bin\Debug\net6.0\LS.Repository.dll
+C:\Users\Billy\source\repos\LoadingSystem\LS.Repository\bin\Debug\net6.0\LS.Repository.pdb
+C:\Users\Billy\source\repos\LoadingSystem\LS.Repository\bin\Debug\net6.0\LS.Model.dll
+C:\Users\Billy\source\repos\LoadingSystem\LS.Repository\bin\Debug\net6.0\LS.Model.pdb
+C:\Users\Billy\source\repos\LoadingSystem\LS.Repository\obj\Debug\net6.0\LS.Repository.csproj.AssemblyReference.cache
+C:\Users\Billy\source\repos\LoadingSystem\LS.Repository\obj\Debug\net6.0\LS.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Billy\source\repos\LoadingSystem\LS.Repository\obj\Debug\net6.0\LS.Repository.AssemblyInfoInputs.cache
+C:\Users\Billy\source\repos\LoadingSystem\LS.Repository\obj\Debug\net6.0\LS.Repository.AssemblyInfo.cs
+C:\Users\Billy\source\repos\LoadingSystem\LS.Repository\obj\Debug\net6.0\LS.Repository.csproj.CoreCompileInputs.cache
+C:\Users\Billy\source\repos\LoadingSystem\LS.Repository\obj\Debug\net6.0\LS.Repository.csproj.CopyComplete
+C:\Users\Billy\source\repos\LoadingSystem\LS.Repository\obj\Debug\net6.0\LS.Repository.dll
+C:\Users\Billy\source\repos\LoadingSystem\LS.Repository\obj\Debug\net6.0\refint\LS.Repository.dll
+C:\Users\Billy\source\repos\LoadingSystem\LS.Repository\obj\Debug\net6.0\LS.Repository.pdb
+C:\Users\Billy\source\repos\LoadingSystem\LS.Repository\obj\Debug\net6.0\ref\LS.Repository.dll
