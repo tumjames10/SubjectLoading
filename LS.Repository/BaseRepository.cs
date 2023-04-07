@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,25 +12,25 @@ namespace LS.Repository
 {
     public class BaseRepository<T> : IRepository<T> where T : class
     {
-        private readonly LSContext dbContext;
+        public LSContext DbContext { get; set; }
 
         public BaseRepository(LSContext context)
         {
-            dbContext = context;
+            DbContext = context;
         }
 
         public T Insert(T entity)
         {
-            dbContext.Add(entity);
+            DbContext.Set<T>().Add(entity);
             return entity;
         }
 
-        public T Update(T entity)
+        public T Update(int id, T entity)
         {
-            var found = dbContext.Find<T>(entity);
+            var found = DbContext.Set<T>().Find(id);
 
             if (found != null)
-                dbContext.Update(entity);
+                DbContext.Entry(found).CurrentValues.SetValues(entity);
             else
                 throw new KeyNotFoundException();
 
@@ -38,10 +39,10 @@ namespace LS.Repository
 
         public T Delete(T entity)
         {
-            var found = dbContext.Find<T>(entity);
+            var found = DbContext.Find<T>(entity);
 
             if (found != null)
-                dbContext.Remove(entity);
+                DbContext.Set<T>().Remove(entity);
             else
                 throw new KeyNotFoundException();
 
@@ -50,22 +51,29 @@ namespace LS.Repository
 
         public T Get(T entity)
         {
-            var found = dbContext.Find<T>(entity);
-
-            if (found != null)
-                return found;
-            else
-                return null;
+            return DbContext.Set<T>().Find(entity);
         }
 
-        public T GetByID(int id)
+        public virtual T GetByID(int id)
         {
-            throw new NotImplementedException();
+            return DbContext.Set<T>().Find(id);
         }
 
         public int SaveChanges()
         {
-            return dbContext.SaveChanges();
+            return DbContext.SaveChanges();
+        }
+
+        public IQueryable<T> GetAll(Expression<Func<T, bool>>? param = null)
+        {
+            if (param != null)
+            {
+                return DbContext.Set<T>().Where(param);
+            }
+            else
+            {
+                return DbContext.Set<T>();
+            }
         }
     }
 }

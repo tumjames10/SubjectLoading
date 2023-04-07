@@ -11,7 +11,7 @@ namespace Subject.Loading.System.WEB.Controllers
     [ApiController]
     public class DepartmentController : ControllerBase
     {
-        private IAllRepository allRepository;
+        private readonly IAllRepository allRepository;
 
         public DepartmentController(IAllRepository allRep)
         {
@@ -20,16 +20,16 @@ namespace Subject.Loading.System.WEB.Controllers
 
         // GET: api/<DepartmentController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Department> Get()
         {
-            return new string[] { "value1", "value2" };
+            return allRepository.DepartmentRepository.GetAll();
         }
 
         // GET api/<DepartmentController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Department Get(int id)
         {
-            return "value";
+            return allRepository.DepartmentRepository.GetByID(id);
         }
 
         // POST api/<DepartmentController>
@@ -44,14 +44,20 @@ namespace Subject.Loading.System.WEB.Controllers
 
         // PUT api/<DepartmentController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] Department value)
         {
+            allRepository.DepartmentRepository.Update(id, value);
+            allRepository.DepartmentRepository.SaveChanges();
         }
 
         // DELETE api/<DepartmentController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var foundToDelete = allRepository.DepartmentRepository.GetByID(id);
+
+            allRepository.DepartmentRepository.Delete(foundToDelete);
+            allRepository.DepartmentRepository.SaveChanges();
         }
     }
 }

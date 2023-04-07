@@ -22,6 +22,9 @@ namespace LS.Model
 
         public string Address { get; set; }
 
+        public string Title { get; set; }
+
+        public string Photo { get; set;  }
 
         public int DepartmentID { get; set; }
 

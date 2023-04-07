@@ -10,5 +10,15 @@ namespace LS.Repository
         {
                
         }
+
+        public Department GetByID(int id)
+        {
+            if (id <= 0)
+                throw new ArgumentException("Zero ID");
+
+            return base.GetByID(id);
+        }
+
+
     }
 }

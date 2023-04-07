@@ -11,44 +11,55 @@ namespace Subject.Loading.System.WEB.Controllers
     [ApiController]
     public class FacultyController : ControllerBase
     {
-        private AllRepository allRep;
+        private readonly IAllRepository allRepository;
 
         public FacultyController(IAllRepository allRep)
         {
-            allRep = allRep;
+            allRepository = allRep;
         }
 
-        // GET: api/<Controller>
+        // GET: api/<FacultyController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Faculty> Get()
         {
-            return new string[] { "value1", "value2" };
+            return allRepository.FacultyRepository.GetAll();
         }
 
-        // GET api/<Controller>/5
+        // GET api/<FacultyController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Faculty Get(int id)
         {
-            return "value";
+            return allRepository.FacultyRepository.GetByID(id);
         }
 
-        // POST api/<Controller>
+        // POST api/<FacultyController>
         [HttpPost]
         public Faculty Post([FromBody] Faculty value)
         {
-            return allRep.FacultyRepository.Insert(value);
+            var dept = allRepository.FacultyRepository.Insert(value);
+            allRepository.FacultyRepository.SaveChanges();
+
+            return dept;
         }
 
-        // PUT api/<Controller>/5
+        // PUT api/<FacultyController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] Faculty value)
         {
+            allRepository.FacultyRepository.Update(id, value);
+            allRepository.FacultyRepository.SaveChanges();
+
         }
 
-        // DELETE api/<Controller>/5
+        // DELETE api/<FacultyController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var foundToDelete = allRepository.FacultyRepository.GetByID(id);
+
+            allRepository.FacultyRepository.Delete(foundToDelete);
+            allRepository.FacultyRepository.SaveChanges();
+
         }
     }
 }
