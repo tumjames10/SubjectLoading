@@ -661,6 +661,9 @@
         }
       },
       "LoadingSystem/1.0.0": {
+        "dependencies": {
+          "LS.Model": "1.0.0"
+        },
         "runtime": {
           "LoadingSystem.dll": {}
         }

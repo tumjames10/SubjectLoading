@@ -27,7 +27,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Billy\\source\\repos\\LoadingSystem\\LS.Model\\LS.Model.csproj": {
+                "projectPath": "C:\\Users\\Billy\\source\\repos\\LoadingSystem\\LS.Model\\LS.Model.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

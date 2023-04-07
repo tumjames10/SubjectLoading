@@ -25,5 +25,7 @@ namespace LS.Repository.Interface
         ISubjectRepository SubjectRepository { get; set; }
 
         ISubjectScheduleRepository SubjectScheduleRepository { get; set; }
+
+        ISemesterRepository SemesterRepository { get; set; }
     }
 }

@@ -19,6 +19,7 @@ namespace LS.Repository
         public IScheduleRepository ScheduleRepository { get; set; }
         public ISubjectRepository SubjectRepository { get; set; }
         public ISubjectScheduleRepository SubjectScheduleRepository { get; set; }
+        public ISemesterRepository SemesterRepository { get; set; }
 
         public AllRepository(LSContext context)
         {
@@ -31,6 +32,7 @@ namespace LS.Repository
             ScheduleRepository = new ScheduleRepository(context);
             SubjectRepository = new SubjectRepository(context);
             SubjectScheduleRepository = new SubjectScheduleRepository(context);
+            SemesterRepository = new SemesterRepository(context);
         }
     }
 }

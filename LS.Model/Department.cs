@@ -12,6 +12,8 @@ namespace LS.Model
 
         public string Name { get; set; }
 
+        public string Allias { get; set; }
+
         public List<Subject> Subjects { get; set; }
 
         public List<Faculty> Faculties { get; set; }

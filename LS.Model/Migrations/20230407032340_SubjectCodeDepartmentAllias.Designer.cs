@@ -4,6 +4,7 @@ using LS.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LS.Model.Migrations
 {
     [DbContext(typeof(LSContext))]
-    partial class LSContextModelSnapshot : ModelSnapshot
+    [Migration("20230407032340_SubjectCodeDepartmentAllias")]
+    partial class SubjectCodeDepartmentAllias
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -302,39 +305,6 @@ namespace LS.Model.Migrations
                     b.ToTable("Schedule");
                 });
 
-            modelBuilder.Entity("LS.Model.Semester", b =>
-                {
-                    b.Property<int>("SemesterID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SemesterID"));
-
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ModifiedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("SemesterName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Year")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("SemesterID");
-
-                    b.ToTable("Semester");
-                });
-
             modelBuilder.Entity("LS.Model.Subject", b =>
                 {
                     b.Property<int>("SubjectId")
@@ -370,17 +340,12 @@ namespace LS.Model.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SemesterID")
-                        .HasColumnType("int");
-
                     b.Property<int?>("Units")
                         .HasColumnType("int");
 
                     b.HasKey("SubjectId");
 
                     b.HasIndex("DepartmentID");
-
-                    b.HasIndex("SemesterID");
 
                     b.ToTable("Subject");
                 });
@@ -529,15 +494,7 @@ namespace LS.Model.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("LS.Model.Semester", "Semester")
-                        .WithMany("Subjects")
-                        .HasForeignKey("SemesterID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Department");
-
-                    b.Navigation("Semester");
                 });
 
             modelBuilder.Entity("LS.Model.SubjectSchedule", b =>
@@ -576,11 +533,6 @@ namespace LS.Model.Migrations
             modelBuilder.Entity("LS.Model.Room", b =>
                 {
                     b.Navigation("RoomSubjectSchedules");
-                });
-
-            modelBuilder.Entity("LS.Model.Semester", b =>
-                {
-                    b.Navigation("Subjects");
                 });
 
             modelBuilder.Entity("LS.Model.Subject", b =>

@@ -12,11 +12,19 @@ namespace LS.Model
 
         public string Name { get; set; }
 
+        public string Description { get; set; }
+
+        public string Code { get; set; }
+
         public int? Units { get; set; }
 
         public int DepartmentID { get; set; }
 
         public Department Department { get; set; }
+
+        public int SemesterID { get; set; }
+
+        public Semester Semester { get; set; }
 
         public List<SubjectSchedule> SubjectSchedules { get; set; }
 

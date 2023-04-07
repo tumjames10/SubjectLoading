@@ -10,3 +10,6 @@ C:\Users\Billy\source\repos\LoadingSystem\LoadingSystem\obj\Debug\net6.0\Loading
 C:\Users\Billy\source\repos\LoadingSystem\LoadingSystem\obj\Debug\net6.0\refint\LoadingSystem.dll
 C:\Users\Billy\source\repos\LoadingSystem\LoadingSystem\obj\Debug\net6.0\LoadingSystem.pdb
 C:\Users\Billy\source\repos\LoadingSystem\LoadingSystem\obj\Debug\net6.0\ref\LoadingSystem.dll
+C:\Users\Billy\source\repos\LoadingSystem\LoadingSystem\bin\Debug\net6.0\LS.Model.dll
+C:\Users\Billy\source\repos\LoadingSystem\LoadingSystem\bin\Debug\net6.0\LS.Model.pdb
+C:\Users\Billy\source\repos\LoadingSystem\LoadingSystem\obj\Debug\net6.0\LoadingSystem.csproj.CopyComplete

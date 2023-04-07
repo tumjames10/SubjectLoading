@@ -927,6 +927,9 @@
       "LoadingSystem/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "LS.Model": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/LoadingSystem.dll": {}
         },
