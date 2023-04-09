@@ -15,6 +15,15 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<LSContext>();
 builder.Services.AddScoped<IAllRepository, AllRepository>();
 
+builder.Services.AddCors(options => 
+    options.AddPolicy("localhost", builder =>
+    {
+        builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+    })
+);
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -23,6 +32,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("localhost");
 
 app.UseHttpsRedirection();
 
