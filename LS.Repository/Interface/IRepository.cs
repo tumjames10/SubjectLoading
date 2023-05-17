@@ -13,7 +13,7 @@ namespace LS.Repository.Interface
 
         T Update(int id, T entity);
 
-        T Delete(T entity);
+        T Delete(int id);
 
         T Get(T entity);
 

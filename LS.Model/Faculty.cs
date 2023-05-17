@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace LS.Model
@@ -28,11 +29,7 @@ namespace LS.Model
 
         public int DepartmentID { get; set; }
 
-        public Department Department { get; set; }
-
-        public List<InstructorSchedule> InstructorSchedules { get; set; }
-
-        public List<InstructorSchedule> AdminApprovedSchedules { get; set; }
+        public Department? Department { get; set; }
 
         public FacultyType FacultyType { get; set; }
     }

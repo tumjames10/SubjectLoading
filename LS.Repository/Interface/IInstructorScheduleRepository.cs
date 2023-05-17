@@ -9,5 +9,6 @@ namespace LS.Repository.Interface
 {
     public interface IInstructorScheduleRepository : IRepository<InstructorSchedule>
     {
+        List<InstructorSchedule> GetInstructorSchedule(int facultyID, int semesterID);
     }
 }

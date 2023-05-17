@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace LS.Model
@@ -14,6 +15,6 @@ namespace LS.Model
 
         public string Year { get; set; }
 
-        public List<Subject> Subjects { get; set; }
+        public List<Subject>? Subjects { get; set; }
     }
 }

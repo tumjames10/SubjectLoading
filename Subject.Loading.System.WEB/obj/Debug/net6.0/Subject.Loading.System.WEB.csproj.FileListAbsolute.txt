@@ -78,3 +78,5 @@ C:\Users\Billy\source\repos\LoadingSystem\Subject.Loading.System.WEB\bin\Debug\n
 C:\Users\Billy\source\repos\LoadingSystem\Subject.Loading.System.WEB\bin\Debug\net6.0\LoadingSystem.pdb
 C:\Users\Billy\source\repos\LoadingSystem\Subject.Loading.System.WEB\bin\Debug\net6.0\LS.Model.pdb
 C:\Users\Billy\source\repos\LoadingSystem\Subject.Loading.System.WEB\bin\Debug\net6.0\LS.Repository.pdb
+C:\Users\Billy\source\repos\LoadingSystem\Subject.Loading.System.WEB\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Billy\source\repos\LoadingSystem\Subject.Loading.System.WEB\bin\Debug\net6.0\BCrypt.Net.dll

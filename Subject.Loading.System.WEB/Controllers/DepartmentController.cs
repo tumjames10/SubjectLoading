@@ -1,6 +1,7 @@
 ﻿using LS.Model;
 using LS.Repository;
 using LS.Repository.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -9,6 +10,7 @@ namespace Subject.Loading.System.WEB.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize(Roles /*="Admin")]*/
     public class DepartmentController : ControllerBase
     {
         private readonly IAllRepository allRepository;
@@ -54,9 +56,7 @@ namespace Subject.Loading.System.WEB.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            var foundToDelete = allRepository.DepartmentRepository.GetByID(id);
-
-            allRepository.DepartmentRepository.Delete(foundToDelete);
+            allRepository.DepartmentRepository.Delete(id);
             allRepository.DepartmentRepository.SaveChanges();
         }
     }

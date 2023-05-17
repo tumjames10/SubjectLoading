@@ -17,7 +17,7 @@ namespace LS.Model.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.4")
+                .HasAnnotation("ProductVersion", "7.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -127,7 +127,7 @@ namespace LS.Model.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("InstructorScheduleID"));
 
-                    b.Property<int>("AdminFacultyID")
+                    b.Property<int>("AdminID")
                         .HasColumnType("int");
 
                     b.Property<int>("CreatedBy")
@@ -145,27 +145,68 @@ namespace LS.Model.Migrations
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("SubjectScheduleID")
+                    b.Property<int>("RoomSubjectScheduleID")
                         .HasColumnType("int");
 
                     b.HasKey("InstructorScheduleID");
 
-                    b.HasIndex("AdminFacultyID");
-
-                    b.HasIndex("FacultyID");
-
-                    b.HasIndex("SubjectScheduleID");
+                    b.HasIndex("RoomSubjectScheduleID");
 
                     b.ToTable("InstructorSchedule");
                 });
 
-            modelBuilder.Entity("LS.Model.Location", b =>
+            modelBuilder.Entity("LS.Model.Request", b =>
                 {
-                    b.Property<int>("LocationID")
+                    b.Property<int>("RequestID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LocationID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RequestID"));
+
+                    b.Property<DateTime>("ApprovedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("IsRead")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ModifiedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("RequestedToID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RequesterID")
+                        .HasColumnType("int");
+
+                    b.HasKey("RequestID");
+
+                    b.ToTable("Request");
+                });
+
+            modelBuilder.Entity("LS.Model.Room", b =>
+                {
+                    b.Property<int>("RoomID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoomID"));
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -181,39 +222,11 @@ namespace LS.Model.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ModifiedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("LocationID");
-
-                    b.ToTable("Location");
-                });
-
-            modelBuilder.Entity("LS.Model.Room", b =>
-                {
-                    b.Property<int>("RoomID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoomID"));
-
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<int?>("FloorNumber")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsAvailable")
                         .HasColumnType("bit");
-
-                    b.Property<int>("LocationID")
-                        .HasColumnType("int");
 
                     b.Property<int>("ModifiedBy")
                         .HasColumnType("int");
@@ -227,8 +240,6 @@ namespace LS.Model.Migrations
 
                     b.HasKey("RoomID");
 
-                    b.HasIndex("LocationID");
-
                     b.ToTable("Room");
                 });
 
@@ -239,41 +250,6 @@ namespace LS.Model.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoomSubjectScheduleID"));
-
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ModifiedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("RoomID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SubjectScheduleID")
-                        .HasColumnType("int");
-
-                    b.HasKey("RoomSubjectScheduleID");
-
-                    b.HasIndex("RoomID");
-
-                    b.HasIndex("SubjectScheduleID");
-
-                    b.ToTable("RoomSubjectSchedule");
-                });
-
-            modelBuilder.Entity("LS.Model.Schedule", b =>
-                {
-                    b.Property<int>("ScheduleID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ScheduleID"));
 
                     b.Property<int>("CreatedBy")
                         .HasColumnType("int");
@@ -294,12 +270,22 @@ namespace LS.Model.Migrations
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("RoomID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubjectID")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("To")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("ScheduleID");
+                    b.HasKey("RoomSubjectScheduleID");
 
-                    b.ToTable("Schedule");
+                    b.HasIndex("RoomID");
+
+                    b.HasIndex("SubjectID");
+
+                    b.ToTable("RoomSubjectSchedule");
                 });
 
             modelBuilder.Entity("LS.Model.Semester", b =>
@@ -385,41 +371,6 @@ namespace LS.Model.Migrations
                     b.ToTable("Subject");
                 });
 
-            modelBuilder.Entity("LS.Model.SubjectSchedule", b =>
-                {
-                    b.Property<int>("SubjectScheduleID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SubjectScheduleID"));
-
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ModifiedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ScheduleID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SubjectID")
-                        .HasColumnType("int");
-
-                    b.HasKey("SubjectScheduleID");
-
-                    b.HasIndex("ScheduleID");
-
-                    b.HasIndex("SubjectID");
-
-                    b.ToTable("SubjectSchedule");
-                });
-
             modelBuilder.Entity("LS.Model.User", b =>
                 {
                     b.Property<int>("UserID")
@@ -441,6 +392,10 @@ namespace LS.Model.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -466,40 +421,13 @@ namespace LS.Model.Migrations
 
             modelBuilder.Entity("LS.Model.InstructorSchedule", b =>
                 {
-                    b.HasOne("LS.Model.Faculty", "AdminFaculty")
-                        .WithMany("AdminApprovedSchedules")
-                        .HasForeignKey("AdminFacultyID")
-                        .OnDelete(DeleteBehavior.ClientNoAction)
-                        .IsRequired();
-
-                    b.HasOne("LS.Model.Faculty", "Instructor")
+                    b.HasOne("LS.Model.RoomSubjectSchedule", "RoomSubjectSchedule")
                         .WithMany("InstructorSchedules")
-                        .HasForeignKey("FacultyID")
-                        .OnDelete(DeleteBehavior.ClientNoAction)
-                        .IsRequired();
-
-                    b.HasOne("LS.Model.SubjectSchedule", "SubjectSchedule")
-                        .WithMany("InstructorSchedules")
-                        .HasForeignKey("SubjectScheduleID")
+                        .HasForeignKey("RoomSubjectScheduleID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("AdminFaculty");
-
-                    b.Navigation("Instructor");
-
-                    b.Navigation("SubjectSchedule");
-                });
-
-            modelBuilder.Entity("LS.Model.Room", b =>
-                {
-                    b.HasOne("LS.Model.Location", "Location")
-                        .WithMany()
-                        .HasForeignKey("LocationID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Location");
+                    b.Navigation("RoomSubjectSchedule");
                 });
 
             modelBuilder.Entity("LS.Model.RoomSubjectSchedule", b =>
@@ -510,15 +438,15 @@ namespace LS.Model.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("LS.Model.SubjectSchedule", "SubjectSchedule")
+                    b.HasOne("LS.Model.Subject", "Subject")
                         .WithMany("RoomSubjectSchedules")
-                        .HasForeignKey("SubjectScheduleID")
+                        .HasForeignKey("SubjectID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Room");
 
-                    b.Navigation("SubjectSchedule");
+                    b.Navigation("Subject");
                 });
 
             modelBuilder.Entity("LS.Model.Subject", b =>
@@ -540,25 +468,6 @@ namespace LS.Model.Migrations
                     b.Navigation("Semester");
                 });
 
-            modelBuilder.Entity("LS.Model.SubjectSchedule", b =>
-                {
-                    b.HasOne("LS.Model.Schedule", "Schedule")
-                        .WithMany()
-                        .HasForeignKey("ScheduleID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LS.Model.Subject", "Subject")
-                        .WithMany("SubjectSchedules")
-                        .HasForeignKey("SubjectID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Schedule");
-
-                    b.Navigation("Subject");
-                });
-
             modelBuilder.Entity("LS.Model.Department", b =>
                 {
                     b.Navigation("Faculties");
@@ -566,16 +475,14 @@ namespace LS.Model.Migrations
                     b.Navigation("Subjects");
                 });
 
-            modelBuilder.Entity("LS.Model.Faculty", b =>
-                {
-                    b.Navigation("AdminApprovedSchedules");
-
-                    b.Navigation("InstructorSchedules");
-                });
-
             modelBuilder.Entity("LS.Model.Room", b =>
                 {
                     b.Navigation("RoomSubjectSchedules");
+                });
+
+            modelBuilder.Entity("LS.Model.RoomSubjectSchedule", b =>
+                {
+                    b.Navigation("InstructorSchedules");
                 });
 
             modelBuilder.Entity("LS.Model.Semester", b =>
@@ -585,13 +492,6 @@ namespace LS.Model.Migrations
 
             modelBuilder.Entity("LS.Model.Subject", b =>
                 {
-                    b.Navigation("SubjectSchedules");
-                });
-
-            modelBuilder.Entity("LS.Model.SubjectSchedule", b =>
-                {
-                    b.Navigation("InstructorSchedules");
-
                     b.Navigation("RoomSubjectSchedules");
                 });
 #pragma warning restore 612, 618

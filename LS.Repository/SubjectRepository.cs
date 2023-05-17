@@ -10,5 +10,10 @@ namespace LS.Repository
         {
                
         }
+
+        public List<Subject> GetAllSubjects(int semesterID)
+        {
+            return this.DbContext.Subject.Where(j => j.SemesterID == semesterID).Include(j => j.Semester).ToList();
+        }
     }
 }

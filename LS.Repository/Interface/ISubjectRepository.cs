@@ -9,5 +9,6 @@ namespace LS.Repository.Interface
 {
     public interface ISubjectRepository : IRepository<Subject>
     {
+        List<Subject> GetAllSubjects(int semesterID);
     }
 }

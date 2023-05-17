@@ -24,6 +24,13 @@ namespace Subject.Loading.System.WEB.Controllers
         {
             return allRepository.SubjectRepository.GetAll();
         }
+        // GET: api/<SubjectController>
+        [HttpGet("all/{semesterID}")]
+        public IEnumerable<LS.Model.Subject> GetSubjects(int semesterID)
+        {
+            return allRepository.SubjectRepository.GetAllSubjects(semesterID);
+        }
+
 
         // GET api/<SubjectController>/5
         [HttpGet("{id}")]
@@ -54,9 +61,8 @@ namespace Subject.Loading.System.WEB.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            var foundToDelete = allRepository.SubjectRepository.GetByID(id);
 
-            allRepository.SubjectRepository.Delete(foundToDelete);
+            allRepository.SubjectRepository.Delete(id);
             allRepository.SubjectRepository.SaveChanges();
         }
     }

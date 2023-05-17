@@ -21,6 +21,15 @@ namespace LS.Repository
 
         public T Insert(T entity)
         {
+            if (entity == null)
+                throw new ArgumentNullException("entity", "You pass null for inserting");
+
+            var tEntity = entity as BaseEntity;
+            // this should be change when you already setup a user
+            tEntity.CreatedBy = 1;
+            tEntity.CreatedDate = DateTime.Now;
+
+
             DbContext.Set<T>().Add(entity);
             return entity;
         }
@@ -29,24 +38,34 @@ namespace LS.Repository
         {
             var found = DbContext.Set<T>().Find(id);
 
+            var tEntity = entity as BaseEntity;
+            // this should be change when you already setup a user
+            tEntity.ModifiedBy = 1;
+            tEntity.ModifiedDate = DateTime.Now;
+
+
             if (found != null)
+            {
+                DbContext.Attach(found);
+                DbContext.Entry(found).State = EntityState.Modified;
                 DbContext.Entry(found).CurrentValues.SetValues(entity);
+            }
             else
                 throw new KeyNotFoundException();
 
             return entity;
         }
 
-        public T Delete(T entity)
+        public T Delete(int id)
         {
-            var found = DbContext.Find<T>(entity);
+            var found = DbContext.Set<T>().Find(id);
 
             if (found != null)
-                DbContext.Set<T>().Remove(entity);
+                DbContext.Set<T>().Remove(found);
             else
                 throw new KeyNotFoundException();
 
-            return entity;
+            return found;
         }
 
         public T Get(T entity)

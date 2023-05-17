@@ -14,18 +14,16 @@ namespace LS.Repository.Interface
 
         IInstructorScheduleRepository InstructorScheduleRepository { get; set; }
 
-        ILocationRepository LocationRepository { get; set; }
-
         IRoomRepository RoomRepository { get; set; }
 
         IRoomSubjectScheduleRepository RoomSubjectScheduleRepository { get; set; }
 
-        IScheduleRepository ScheduleRepository { get; set; }
-
         ISubjectRepository SubjectRepository { get; set; }
 
-        ISubjectScheduleRepository SubjectScheduleRepository { get; set; }
-
         ISemesterRepository SemesterRepository { get; set; }
+
+        IRequestRepository RequestRepository { get; set; }
+
+        IUserRepository UserRepository { get; set; }
     }
 }

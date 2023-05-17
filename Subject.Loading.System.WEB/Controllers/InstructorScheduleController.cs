@@ -32,6 +32,13 @@ namespace Subject.Loading.System.WEB.Controllers
             return allRepository.InstructorScheduleRepository.GetByID(id);
         }
 
+        [HttpGet("schedules")]
+        public IEnumerable<InstructorSchedule> GetInstructorSchedules([FromQuery]int facultyId, [FromQuery]int semesterID)
+        {
+            return allRepository.InstructorScheduleRepository.GetInstructorSchedule(facultyId, semesterID);
+        }
+
+
         // POST api/<InstructorScheduleController>
         [HttpPost]
         public InstructorSchedule Post([FromBody] InstructorSchedule value)
@@ -54,9 +61,8 @@ namespace Subject.Loading.System.WEB.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            var foundToDelete = allRepository.InstructorScheduleRepository.GetByID(id);
 
-            allRepository.InstructorScheduleRepository.Delete(foundToDelete);
+            allRepository.InstructorScheduleRepository.Delete(id);
             allRepository.InstructorScheduleRepository.SaveChanges();
         }
     }

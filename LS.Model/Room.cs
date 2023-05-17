@@ -14,12 +14,12 @@ namespace LS.Model
 
         public int? FloorNumber { get; set; }
 
-        public int LocationID { get; set; }
+        public string BuildingName { get; set; }
 
-        public Location Location { get; set; }
+        public string Address { get; set; }
 
         public bool IsAvailable { get; set; }
 
-        public List<RoomSubjectSchedule> RoomSubjectSchedules { get; set; }
+        public List<RoomSubjectSchedule>? RoomSubjectSchedules { get; set; }
     }
 }

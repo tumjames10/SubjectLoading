@@ -55,9 +55,8 @@ namespace Subject.Loading.System.WEB.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            var foundToDelete = allRepository.SemesterRepository.GetByID(id);
 
-            allRepository.SemesterRepository.Delete(foundToDelete);
+            allRepository.SemesterRepository.Delete(id);
             allRepository.SemesterRepository.SaveChanges();
 
         }

@@ -10,5 +10,23 @@ namespace LS.Repository
         {
                
         }
+
+        public List<ViewRoomSubjectSchedule> GetRoomSubjectList(int semesterID, string day)
+        {
+            
+
+            return new List<ViewRoomSubjectSchedule>();
+        }
+
+        public RoomSubjectSchedule GetRoomSubjectSchedule(int Id)
+        {
+
+            var roomSubject = this.DbContext.RoomSubjectSchedule.FirstOrDefault(j => j.RoomSubjectScheduleID == Id);
+
+            roomSubject.Room = this.DbContext.Room.FirstOrDefault(j => j.RoomID == roomSubject.RoomID);
+
+
+            return roomSubject;
+        }
     }
 }

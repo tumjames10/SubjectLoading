@@ -13,26 +13,23 @@ namespace LS.Repository
         public IDepartmentRepository DepartmentRepository { get; set; }
         public IFacultyRepository FacultyRepository { get; set; }
         public IInstructorScheduleRepository InstructorScheduleRepository { get; set; }
-        public ILocationRepository LocationRepository { get; set; }
         public IRoomRepository RoomRepository { get; set; }
         public IRoomSubjectScheduleRepository RoomSubjectScheduleRepository { get; set; }
-        public IScheduleRepository ScheduleRepository { get; set; }
         public ISubjectRepository SubjectRepository { get; set; }
-        public ISubjectScheduleRepository SubjectScheduleRepository { get; set; }
         public ISemesterRepository SemesterRepository { get; set; }
-
+        public IRequestRepository RequestRepository { get; set; }
+        public IUserRepository UserRepository { get; set; }
         public AllRepository(LSContext context)
         {
             DepartmentRepository = new DepartmentRepository(context);
             FacultyRepository = new FacultyRepository(context);
             InstructorScheduleRepository = new InstructorScheduleRepository(context);
-            LocationRepository = new LocationRepository(context);
             RoomRepository = new RoomRepository(context);
             RoomSubjectScheduleRepository = new RoomSubjectScheduleRepository(context);
-            ScheduleRepository = new ScheduleRepository(context);
             SubjectRepository = new SubjectRepository(context);
-            SubjectScheduleRepository = new SubjectScheduleRepository(context);
             SemesterRepository = new SemesterRepository(context);
+            RequestRepository = new RequestRepository(context);
+            UserRepository = new UserRepository(context);
         }
     }
 }

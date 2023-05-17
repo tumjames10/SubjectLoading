@@ -25,10 +25,29 @@ namespace Subject.Loading.System.WEB.Controllers
             return allRepository.RoomSubjectScheduleRepository.GetAll();
         }
 
+        [HttpGet]
+        [Route("/list")]
+        public RoomSubjectSchedule Get([FromQuery]string departmentName)
+        {
+            return allRepository.RoomSubjectScheduleRepository.GetRoomSubjectSchedule(1);
+            //return allRepository.RoomSubjectScheduleRepository.GetRoomSubjectList(departmentName);
+        }
+
+        [HttpGet]
+        [Route("/semester/{semesterID}")]
+        public IEnumerable<ViewRoomSubjectSchedule> GetRoomSubjectsScheduled(int semesterID, [FromQuery] string day) 
+        {
+            return allRepository.RoomSubjectScheduleRepository.GetRoomSubjectList(semesterID, day);
+            //return allRepository.RoomSubjectScheduleRepository.GetRoomSubjectList(departmentName);
+        }
+
         // GET api/<RoomSubjectScheduleController>/5
         [HttpGet("{id}")]
         public RoomSubjectSchedule Get(int id)
         {
+            var a = DateTime.MinValue;
+
+            var b = Convert.ToDateTime("Mon Jan 01 2001 10:31:00 GMT+0800 (Philippine Standard Time)");
             return allRepository.RoomSubjectScheduleRepository.GetByID(id);
         }
 
@@ -54,9 +73,8 @@ namespace Subject.Loading.System.WEB.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            var foundToDelete = allRepository.RoomSubjectScheduleRepository.GetByID(id);
 
-            allRepository.RoomSubjectScheduleRepository.Delete(foundToDelete);
+            allRepository.RoomSubjectScheduleRepository.Delete(id);
             allRepository.RoomSubjectScheduleRepository.SaveChanges();
         }
     }

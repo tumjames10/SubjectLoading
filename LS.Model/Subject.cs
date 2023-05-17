@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace LS.Model
 {
-    public class Subject : BaseEntity
+    public class Subject: BaseEntity
     {
         public int SubjectId { get; set; }
 
@@ -20,13 +22,12 @@ namespace LS.Model
 
         public int DepartmentID { get; set; }
 
-        public Department Department { get; set; }
+        public Department? Department { get; set; }
 
         public int SemesterID { get; set; }
+        public Semester? Semester { get; set; }
 
-        public Semester Semester { get; set; }
-
-        public List<SubjectSchedule> SubjectSchedules { get; set; }
+        public List<RoomSubjectSchedule>? RoomSubjectSchedules { get; set; }
 
 
     }

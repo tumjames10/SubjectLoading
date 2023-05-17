@@ -8,8 +8,9 @@ namespace LS.Model
 {
     public enum FacultyType
     {
-        DepartmentHead,
-        Instructor,
-        Professor
+        Admin = 0,
+        DepartmentChair = 1,
+        Faculty= 2,
+        ProgramChair = 3
     }
 }

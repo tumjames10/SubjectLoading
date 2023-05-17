@@ -12,18 +12,13 @@ namespace LS.Model
 
         public int FacultyID { get; set; }
 
-        public Faculty Instructor { get; set; }
 
-        public int SubjectScheduleID { get; set; }
-
-        public SubjectSchedule SubjectSchedule { get; set; }
+        public int AdminID { get; set; }
 
 
-        /// <summary>
-        /// Admin who scheduled to instructor
-        /// </summary>
-        public int AdminFacultyID { get; set; }
+        public int RoomSubjectScheduleID { get; set; }
 
-        public Faculty AdminFaculty { get; set; }
+        public RoomSubjectSchedule? RoomSubjectSchedule { get; set; }
+
     }
 }
