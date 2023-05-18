@@ -1,10 +1,13 @@
 ﻿using LS.Model;
 using LS.Repository.Interface;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Subject.Loading.System.WEB.Models;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
 
@@ -12,14 +15,18 @@ namespace Subject.Loading.System.WEB.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [AllowAnonymous]
     public class LoginController : ControllerBase
     {
         private readonly IConfiguration _config;
         private readonly IUserRepository _userRepository;
+        private readonly IFacultyRepository _facultyRepository;
         public LoginController(IConfiguration config, IAllRepository allRepository)
         {
             _config = config;
             _userRepository = allRepository.UserRepository;
+            _facultyRepository = allRepository.FacultyRepository;
         }
 
         [HttpPost]
@@ -30,6 +37,7 @@ namespace Subject.Loading.System.WEB.Controllers
             {
                 var token = GenerateToken(user);
 
+                user.ExpiresIn = DateTime.Now.AddMinutes(60);
                 user.Token = token;
                 return Ok(user);
             }
@@ -37,18 +45,22 @@ namespace Subject.Loading.System.WEB.Controllers
             return NotFound();
         }
 
-        [HttpPost("/register")]
-
+        [HttpPost()]
+        [Route("register")]
         public IActionResult Register([FromBody]UserModel userModel)
         {
             if (userModel == null)
                 return BadRequest();
+
+            var faculty = this._facultyRepository.Insert(userModel.Faculty);
+            this._facultyRepository.SaveChanges();
 
             User user = new User()
             {
                 UserName = userModel.UserName,
                 Password = userModel.Password,
                 Role = userModel.Role,
+                FacultyID = faculty.FacultyId
             };
             
             var retVal  = _userRepository.Register(user);
@@ -85,8 +97,9 @@ namespace Subject.Loading.System.WEB.Controllers
             return new UserModel()
             {
                 UserName = user.UserName,
-                Role = user.Role
-                
+                Role = user.Role,
+                UserID = user.UserID ,
+                FacultyID = user.FacultyID
             };
         }
     }

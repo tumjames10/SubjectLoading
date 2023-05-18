@@ -163,7 +163,7 @@ namespace LS.Model.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RequestID"));
 
-                    b.Property<DateTime>("ApprovedOn")
+                    b.Property<DateTime?>("ApprovedOn")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Comment")
@@ -193,6 +193,9 @@ namespace LS.Model.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("RequesterID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SemesterID")
                         .HasColumnType("int");
 
                     b.HasKey("RequestID");
@@ -384,6 +387,9 @@ namespace LS.Model.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("FacultyID")
+                        .HasColumnType("int");
 
                     b.Property<int>("ModifiedBy")
                         .HasColumnType("int");

@@ -14,7 +14,9 @@ namespace LS.Model
 
         public int RequestedToID { get; set; }
 
-        public DateTime ApprovedOn { get; set; }
+        public DateTime? ApprovedOn { get; set; }
+
+        public int SemesterID { get; set;  }
         
         public bool IsApproved { get; set; }
 

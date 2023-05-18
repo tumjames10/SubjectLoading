@@ -10,6 +10,8 @@ namespace LS.Model
     {
         public int UserID { get; set; }
 
+        public int? FacultyID { get; set; }
+
         public string UserName { get; set; }
 
         public string Password { get; set; }

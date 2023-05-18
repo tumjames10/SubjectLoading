@@ -2,6 +2,7 @@
 using LS.Repository;
 using LS.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
+using Subject.Loading.System.WEB.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -30,6 +31,30 @@ namespace Subject.Loading.System.WEB.Controllers
         public Faculty Get(int id)
         {
             return allRepository.FacultyRepository.GetByID(id);
+        }
+
+        [HttpGet("request")]
+        public List<FacultyRequest> GetFacultyRequest()
+        {
+            List<FacultyRequest> retVal = new List<FacultyRequest>();
+            var listUnApproved = allRepository.RequestRepository.GetAll().Where(j => !j.IsApproved).ToList();
+
+            foreach (var item in listUnApproved)
+            {
+                FacultyRequest value = new FacultyRequest();
+
+                value.Faculty = allRepository.FacultyRepository.GetByID(item.RequesterID);
+
+                var semester = allRepository.SemesterRepository.GetByID(item.SemesterID);
+
+                value.SemesterName = semester.SemesterName;
+                value.SemesterID = semester.SemesterID;
+                value.RequestID = item.RequestID;
+
+                retVal.Add(value);
+            }
+
+            return retVal;
         }
 
         // POST api/<FacultyController>

@@ -4,6 +4,7 @@ namespace LS.Model
 {
     public class LSContext : Microsoft.EntityFrameworkCore.DbContext
     {
+        public LSContext(DbContextOptions<LSContext> options) : base(options) { }
 
         public DbSet<Department> Department { get; set; }
 
@@ -23,8 +24,9 @@ namespace LS.Model
 
         public DbSet<Request> Request { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SubjectLoadingDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //    => optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SubjectLoadingDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

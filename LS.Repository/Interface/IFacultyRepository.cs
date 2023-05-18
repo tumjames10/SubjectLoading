@@ -9,5 +9,6 @@ namespace LS.Repository.Interface
 {
     public interface IFacultyRepository : IRepository<Faculty>
     {
+        
     }
 }

@@ -3,6 +3,7 @@ using LS.Repository;
 using LS.Repository.Interface;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Text.Json;
@@ -16,8 +17,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddDbContext<LSContext>();
+var connectionString = builder.Configuration.GetConnectionString("SubjectLoadingDatabase");
+builder.Services.AddDbContext<LSContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddScoped<IAllRepository, AllRepository>();
 
 builder.Services.AddCors(options => 
